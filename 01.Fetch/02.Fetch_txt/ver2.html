@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Fetch a Poem</h1>
+  <p id="poem"></p>
+
+
+  <script>
+    catchPoem
+      .then(poem => {
+        document.getElementById('poem').innerText = poem;
+        console.log('hooray');
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+    async function catchPoem() {
+      const response = await fetch('./poem.txt');
+      return await response.text();
+    }
+
+    /*    
+    fetch('./poem.txt').then(response => {
+      console.log(response);
+      return response.text();
+    }).then(poem => {
+      console.log(poem);
+      document.getElementById('poem').innerText = poem;
+    }).catch(error => {
+      console.error(error);
+      console.log(error);
+    });
+*/
+  </script>
+
+</body>
+
+</html>
