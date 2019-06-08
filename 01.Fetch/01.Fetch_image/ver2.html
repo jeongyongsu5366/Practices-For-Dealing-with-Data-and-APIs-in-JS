@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <img src="" id="boksoong" width="480" />
+
+  <script>
+    console.log('about to fetch boksoong and cocopalm');
+
+    catchCats()
+      .then(response => {
+        console.log('hooray');
+      })
+      .catch(error => {
+        console.log('error!');
+        console.log(error);
+      })
+
+    async function catchCats() {
+      const response = await fetch('./image/boksoong.png');
+      const blob = await response.blob();
+      document.getElementById('boksoong').src = URL.createObjectURL(blob);
+    }
+
+    /*
+        fetch('../image/boksoong.png').then(response => {
+          console.log(response);
+          return response.blob();
+        }).then(blob => {
+          console.log(blob);
+          document.getElementById('boksoong').src = URL.createObjectURL(blob);
+        }).catch(error => {
+          console.log('error!');
+          console.error(error);
+        });
+    */
+  </script>
+</body>
+
+</html>
