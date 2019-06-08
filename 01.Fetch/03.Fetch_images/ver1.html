@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Fetch multiple images using an array</h1>
+
+
+  <script>
+    console.log('about to fetch some images');
+    const filenames = [
+      './image/a.jpg',
+      './image/b.png',
+      './image/c.jpg'
+    ];
+
+    for (let filename of filenames) {
+      fetch(filename).then(response => {
+        return response.blob();
+      }).then(blob => {
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(blob);
+        document.body.append(img);
+      }).catch(error => {
+        console.log('error');
+        console.error(error);
+      })
+    }
+  </script>
+</body>
+
+</html>
